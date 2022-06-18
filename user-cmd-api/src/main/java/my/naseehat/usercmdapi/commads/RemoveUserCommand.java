@@ -1,10 +1,12 @@
 package my.naseehat.usercmdapi.commads;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
-public class RemoveUserCommad {
+@AllArgsConstructor
+public class RemoveUserCommand {
     @TargetAggregateIdentifier
     private String id;
 }
