@@ -4,9 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import my.naseehat.usercmdapi.commads.RegisterUserCommand;
 import my.naseehat.usercmdapi.dto.RegisterUserResponse;
 import org.axonframework.commandhandling.gateway.CommandGateway;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +26,7 @@ public class RegisterUserController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAuthority('WRITE_PRIVILEGE')")
     public ResponseEntity<RegisterUserResponse> registerUser(@RequestBody RegisterUserCommand cmd) {
         cmd.setId(UUID.randomUUID().toString());
         try {

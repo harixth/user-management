@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>user-auth</module>
         <module>user-core</module>
         <module>user-cmd-api</module>
         <module>user-query-api</module>
